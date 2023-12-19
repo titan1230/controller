@@ -16,7 +16,7 @@ export default function Home() {
               <div className="flex w-full h-[50px] bg-[#36363b] rounded-tl-md rounded-tr-md items-center pl-4">
                 <Fish className="w-4 h-4 mr-2 text-white" />
                 <p className="text-white">Makar V2.1.0</p>
-                <div className="flex m-2 gap-x-1 ml-4">
+                <div className="flex m-2 gap-x-1 ml-4 cursor-pointer">
                   <div className="flex bg-gray-400 rounded-sm p-1 text-sm font-medium">
                     AntiCol v1.0.2
                   </div>
@@ -40,7 +40,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex h-full w-full items-center">
-                <img src="./level.png" className="w-[150px] h-[150px] ml-4" alt="" />
+                <img
+                  src="./level.png"
+                  className="w-[150px] h-[150px] ml-4"
+                  alt=""
+                />
               </div>
             </div>
             <div className="flex bg-[#29282a] m-2 mr-1 rounded-md h-[600px]">
