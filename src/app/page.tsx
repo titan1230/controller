@@ -1,6 +1,8 @@
 import { Camera, Fish, GitGraph, Settings } from "lucide-react";
 import Image from "next/image";
 import Alert from "../../public/alert.png";
+import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
@@ -45,10 +47,23 @@ export default function Home() {
                   className="w-[150px] h-[150px] ml-4"
                   alt=""
                 />
+                <div className="flex h-full text-white p-6 w-full">
+                  <div className="flex flex-1 w-full h-full">
+                    <div className="flex-col w-full p-2">
+                      <div className="flex flex-col text-md">Battery stats</div>
+                      <div className="flex items-center justify-center mt-4 gap-x-2">
+                        50%
+                        <Progress value={50} className="mr-4" />
+                      </div>
+                    </div>
+                  </div>
+                  <Separator orientation="vertical" />
+                  <div className="flex flex-1 w-full h-full"></div>
+                </div>
               </div>
             </div>
             <div className="flex bg-[#29282a] m-2 mr-1 rounded-md h-[600px]">
-              <div className="flex w-full h-[50px] bg-[#36363b] rounded-tl-md rounded-tr-md items-center pl-4">
+              <div className="flex w-full h-[50px] bg-[#4c4c56] rounded-tl-md rounded-tr-md items-center pl-4">
                 <Settings className="w-4 h-4 mr-2 text-white" />
                 <p className="text-white">Settings</p>
               </div>
