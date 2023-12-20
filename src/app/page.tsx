@@ -3,13 +3,13 @@ import Image from "next/image";
 import Alert from "../../public/alert.png";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
+import PingComponent from "@/components/fetchROV"
 
 export default function Home() {
   return (
     <main className="flex flex-col">
       <div className="h-[60px] bg-gray-400 w-full items-center flex pl-4">
-        <img src={"./alert.png"} className="w-8 h-8 mr-2" alt={"Alert logo"} />
-        <p className="text-white text-xl font-bold">ROV NOT CONNECTED</p>
+        <PingComponent />
       </div>
       <div className="flex w-full bg-[#1e1f20]">
         <div className="flex flex-1">
@@ -32,7 +32,9 @@ export default function Home() {
                     Kalman Filtering
                   </div>
                   <div className="flex bg-gray-400 rounded-sm p-1 text-sm font-medium items-center">
-                    <img
+                    <Image
+                      width={4}
+                      height={4}
                       src="./opencv.png"
                       alt="opencv"
                       className="w-4 h-4 mr-2 ml-1"
@@ -42,10 +44,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex h-full w-full items-center">
-                <img
+                <Image
                   src="./level.png"
                   className="w-[150px] h-[150px] ml-4"
                   alt=""
+                  width={150}
+                  height={150}
                 />
                 <div className="flex h-full text-white p-6 w-full">
                   <div className="flex flex-1 w-full h-full">
