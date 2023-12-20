@@ -8,7 +8,7 @@ const PingComponent = () => {
   const [online, setOnline] = useState(false);
 
   const pingServer = useCallback(async () => {
-    const response = await fetch('http://192.168.231.90/', { mode: "no-cors" }).catch((err) => {console.log(err)});
+    const response = await fetch('http://192.168.231.90/', { mode: "no-cors" }).catch(err => console.log(''));
 
     if (!response) return console.log("No response from server"); setOnline(false);
   
