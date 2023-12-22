@@ -9,6 +9,7 @@ import {
   Fish,
   GitGraph,
   HomeIcon,
+  Info,
   Settings,
 } from "lucide-react";
 import Image from "next/image";
@@ -18,11 +19,49 @@ import PingComponent from "@/components/fetchROV";
 import { useEffect } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import MyChart from "@/components/myChart";
+import { DataTable } from "./components/dataTable";
+import { Payment, columns } from "./components/columns";
 
 const IP_ADDRESS = "http://192.168.231.90/";
 
-export default function Home() {
+async function getData(): Promise<Payment[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: "728ed52f",
+      location: "100m at Top Left position",
+      status: "detected",
+      logo: "m@example.com",
+    },
+    {
+      id: "728ed52f",
+      location: "200m at Top Right position",
+      status: "pending",
+      logo: "m@example.com",
+    },
+    {
+      id: "728ed52f",
+      location: "300m at Bottom Left position",
+      status: "detected",
+      logo: "m@example.com",
+    },
+    {
+      id: "728ed52f",
+      location: "400m at Top Right position",
+      status: "processing",
+      logo: "m@example.com",
+    },
+    {
+      id: "728ed52f",
+      location: "500m at Top Left position",
+      status: "detected",
+      logo: "m@example.com",
+    },
+    // ...
+  ];
+}
+
+export default async function Home() {
   let keysPressed: { [key: string]: boolean } = {};
 
   useEffect(() => {
@@ -52,6 +91,8 @@ export default function Home() {
     });
     console.log();
   }, []);
+
+  const data = await getData();
 
   return (
     <main className="flex flex-col">
@@ -144,7 +185,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col bg-[#29282a] m-2 mr-1 rounded-md h-[600px]">
+            <div className="flex flex-col bg-[#29282a] m-2 mr-1 rounded-md pb-4">
               <div className="flex w-full h-[50px] bg-[#4c4c56] rounded-tl-md rounded-tr-md items-center pl-4">
                 <Settings className="w-4 h-4 mr-2 text-white" />
                 <p className="text-white">Settings</p>
@@ -212,22 +253,14 @@ export default function Home() {
                   </Label>
                 </div>
               </div>
-              <div className="flex gap-x-6 mt-4 w-full ml-4">
-                <img
-                  src="./tps.png"
-                  alt="model"
-                  className="w-[200px] h-[200px] mt-4"
-                />
-                <img
-                  src="./no_cam.png"
-                  alt="model"
-                  className="w-[200px] h-[200px] mt-4"
-                />
-                <img
-                  src="./no_cam.png"
-                  alt="model"
-                  className="w-[200px] h-[200px] mt-4"
-                />
+            </div>
+            <div className="flex flex-col bg-[#29282a] m-2 mr-1 rounded-md pb-4">
+              <div className="flex w-full h-[50px] bg-[#4c4c56] rounded-tl-md rounded-tr-md items-center pl-4">
+                <Info className="w-4 h-4 mr-2 text-white" />
+                <p className="text-white">Cracks Details</p>
+              </div>
+              <div className="container mt-6 text-white">
+                <DataTable columns={columns} data={data} />
               </div>
             </div>
           </div>
@@ -276,10 +309,25 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex bg-[#29282a] ml-2 mr-2 rounded-md h-[500px] w-full">
+            <div className="flex flex-col bg-[#29282a] ml-2 mr-2 rounded-md pb-4 w-full">
               <div className="flex w-full h-[50px] bg-[#36363b] rounded-tl-md rounded-tr-md items-center pl-4">
                 <GitGraph className="w-4 h-4 mr-2 text-white" />
                 <p className="text-white">Survey Data</p>
+              </div>
+              <div className="flex gap-x-6 mt-4 w-full justify-center">
+                <div className="flex-col">
+                  <iframe src="http://192.168.231.155:3002" className="w-[320px] h-[320px] mt-4" />
+                  <img
+                    src="./tps.png"
+                    alt="model"
+                    className="w-[320px] h-[320px] mt-4"
+                  />
+                </div>
+                <img
+                  src="./no_cam.png"
+                  alt="model"
+                  className="w-[300px] h-[660px] mt-4"
+                />
               </div>
             </div>
           </div>
