@@ -8,8 +8,8 @@ const PingComponent = () => {
 
   const pingServer = async () => {
     try {
-      const response = await fetch('http://192.168.231.90/', { mode: "no-cors" });
-      if (!response.ok) {
+      const response = await fetch('http://192.169.0.2', { mode: "no-cors" });
+      if (response.ok) {
         setOnline(false);
         console.log("No response from server");
       } else {

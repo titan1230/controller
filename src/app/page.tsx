@@ -22,7 +22,7 @@ import { Label } from "@/components/ui/label";
 import { DataTable } from "./components/dataTable";
 import { Payment, columns } from "./components/columns";
 
-const IP_ADDRESS = "http://192.168.231.90/";
+const IP_ADDRESS = "http://192.168.231.155/";
 
 async function getData(): Promise<Payment[]> {
   // Fetch data from your API here.
